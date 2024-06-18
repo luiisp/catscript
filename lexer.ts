@@ -3,12 +3,12 @@ export enum TokenType {
     Identifier,
     Equals,
     OpenParen, CloseParen,
-    Let,
+    Cat,
     BinaryOperator,
 }
 
 const KEYWORDS: Record<string, TokenType> = {
-    'let': TokenType.Let,
+    'cat': TokenType.Cat,
 };
 
 export interface Token {
