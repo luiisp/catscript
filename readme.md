@@ -1,7 +1,7 @@
 # CatScript: A high-level programming language for cats 😼🍷
 
 
-## Try use again 😎!!! 
+## Try use now 😎!!! 
 ```cat
 meow("Hello, World!")
 ```
