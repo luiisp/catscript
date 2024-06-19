@@ -3,8 +3,9 @@ export enum TokenType {
     Identifier,
     Equals,
     OpenParen, CloseParen,
-    Cat,
+    Cat, // let equival
     BinaryOperator,
+    EOF // end f
 }
 
 const KEYWORDS: Record<string, TokenType> = {
@@ -90,6 +91,6 @@ export function tokenize (sourceCode: string): Token[]{
           
     
     };
-
+    tokens.push({value: 'END', type: TokenType.EOF});
     return tokens;
 }
