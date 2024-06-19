@@ -6,7 +6,7 @@ import {
   NumericLiteral,
   Identifier,
 } from "./ast";
-import { tokenize, Token, TokenType } from "./lexer.ts";
+import { tokenize, Token, TokenType } from "./lexer";
 
 export default class Parser {
   private tokens: Token[] = [];
