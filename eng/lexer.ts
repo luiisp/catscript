@@ -52,6 +52,7 @@ export function tokenize (sourceCode: string): Token[]{
             case '+':// (+, -, *, /) 
             case '-':// 
             case '*':// 
+            case '%'://
             case '/':// ... binary op
               tokens.push(token(src.shift(), TokenType.BinaryOperator));
               break;
