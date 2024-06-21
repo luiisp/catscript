@@ -1,0 +1,10 @@
+staticat obj = {
+    name:"catscript",
+    repo:"https://github.com/luiisp/catscript",
+    author:{
+        name: "Pedro Luis Dias",
+        github: "https://github.com/luiisp/"
+    },
+    version:"lasted",
+};
+meow(obj)
