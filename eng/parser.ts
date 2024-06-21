@@ -92,7 +92,7 @@ export default class Parser {
         return {
           kind: "NumericLiteral",
           symbol: parseFloat(this.eat().value),
-        } as NumericLiteral; // float use .. int sup
+        } as unknown as NumericLiteral; // float use .. int sup
       case TokenType.OpenParen: {
         this.eat(); // open p
         const value = this.parse_expr();
