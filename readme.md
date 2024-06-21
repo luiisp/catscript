@@ -42,8 +42,11 @@ Done! 🎉
 5. Test your changes to ensure they work as expected.
 6. Commit your changes and push them to your forked repository.
 7. Submit a pull request to the main i18n4e repository.
+   
 
 Please make sure to follow our [contribution guidelines](CONTRIBUTING.md) and adhere to our [code of conduct](CODE_OF_CONDUCT.md) when contributing.
+> [!IMPORTANT]\
+> Before submitting your PR, ensure that the code is well formatted and follows our requirements
 
 
 ![200w](https://github.com/luiisp/catscript/assets/115284250/8fbf6061-9f54-453b-aaab-de370d116849)
