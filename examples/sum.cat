@@ -1,12 +1,4 @@
-pspsps makeAdder (offset) {
-
-  pspsps add (x, y)  {
-    x + y + offset
-  }
-
-  add
+pspsps add (x, y)  { # define add function
+  x + y # return 15
 }
-
-staticat adder = makeAdder(2); # declare a new staticat variable (const) called adder, which is the result of calling makeAdder 
-
-meow(adder(10, 5)) # print 17
+meow(add(10, 5)) # print 17
