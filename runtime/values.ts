@@ -6,7 +6,9 @@ export type ValueType =
 	| "boolean"
 	| "object"
 	| "native-pspsps"
-	| "function";
+	| "function"
+	| "string";
+	
 
 export interface RuntimeVal {
 	value?: any;
