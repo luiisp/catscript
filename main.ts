@@ -1,20 +1,19 @@
-import Parser from "./eng/parser";
-import readline from 'readline';
+import Parser from "./core/parser";
+import { createGlobalEnv } from "./runtime/environment";
+import { evaluate } from "./runtime/interpreter";
+import fs from 'fs';
+import util from 'util';
 
-function repl() {
-  const parser = new Parser();
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
+run("./examples/sum.cat");
 
-  rl.on('line', (input) => {
-    if (!input || input.includes("exit")) {
-      process.exit(0);
-    }
+async function run(filename: string) {
+    const parser = new Parser();
+    const env = createGlobalEnv();
+
+    const readFile = util.promisify(fs.readFile);
+	const input = await readFile(filename, 'utf-8');
     const program = parser.produceAST(input);
-    console.log(program);
-  });
-}
 
-repl();
+    const result = evaluate(program, env);
+    // console.log(result);
+}

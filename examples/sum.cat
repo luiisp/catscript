@@ -1,0 +1,12 @@
+pspsps makeAdder (offset) {
+
+  pspsps add (x, y)  {
+    x + y + offset
+  }
+
+  add
+}
+
+staticat adder = makeAdder(2);
+
+meow(adder(10, 5))

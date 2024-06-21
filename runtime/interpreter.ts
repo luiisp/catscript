@@ -1,71 +1,58 @@
-import { NullVal, NumberVal, RuntimeVal } from "./values";
-import { BinaryExpr, NumericLiteral, Program, Stmt } from "../eng/ast";
+import { NumberVal, RuntimeVal } from "./values";
+import {
+	AssignmentExpr,
+	BinaryExpr,
+	CallExpr,
+	FunctionDeclaration,
+	Identifier,
+	NumericLiteral,
+	ObjectLiteral,
+	Program,
+	Stmt,
+	VarDeclaration,
+} from "../core/ast";
+import Environment from "./environment";
+import {
+	eval_function_declaration,
+	eval_program,
+	eval_var_declaration,
+} from "./eval/statements";
+import {
+	eval_assignment,
+	eval_binary_expr,
+	eval_call_expr,
+	eval_identifier,
+	eval_object_expr,
+} from "./eval/expressions";
 
-function eval_program(program: Program): RuntimeVal {
-  let lastEvaluated: RuntimeVal = { type: "null", value: "null" } as NullVal;
-  for (const statement of program.body) {
-    lastEvaluated = evaluate(statement);
-  }
-  return lastEvaluated;
-}
-
-function eval_numeric_binary_expr(
-  lhs: NumberVal,
-  rhs: NumberVal,
-  operator: string,
-): NumberVal {
-  let result: number;
-  if (operator == "+") {
-    result = lhs.value + rhs.value;
-  } else if (operator == "-") {
-    result = lhs.value - rhs.value;
-  } else if (operator == "*") {
-    result = lhs.value * rhs.value;
-  } else if (operator == "/") {
-    // TODO: Division by zero checks
-    result = lhs.value / rhs.value;
-  } else {
-    result = lhs.value % rhs.value;
-  }
-
-  return { value: result, type: "number" };
-}
-
-function eval_binary_expr(binop: BinaryExpr): RuntimeVal {
-  const lhs = evaluate(binop.left);
-  const rhs = evaluate(binop.right);
-
-  if (lhs.type == "number" && rhs.type == "number") {
-    return eval_numeric_binary_expr(
-      lhs as NumberVal,
-      rhs as NumberVal,
-      binop.operator,
-    );
-  }
-
-  return { type: "null", value: "null" } as NullVal;
-}
-
-export function evaluate(astNode: Stmt): RuntimeVal {
-  switch (astNode.kind) {
-    case "NumericLiteral":
-      return {
-        value: ((astNode as NumericLiteral).value),
-        type: "number",
-      } as NumberVal;
-    case "NullLiteral":
-      return { value: "null", type: "null" } as NullVal;
-    case "BinaryExpr":
-      return eval_binary_expr(astNode as BinaryExpr);
-    case "Program":
-      return eval_program(astNode as Program);
-
-    // Handle unimplimented ast types as error.
-    default:
-      console.error(
-        "This AST Node has not yet been setup for interpretation.",
-        astNode,
-      );
-      process.exit(0);
-  }
+export function evaluate(astNode: Stmt, env: Environment): RuntimeVal {
+	switch (astNode.kind) {
+		case "NumericLiteral":
+			return {
+				value: (astNode as NumericLiteral).value,
+				type: "number",
+			} as NumberVal;
+		case "Identifier":
+			return eval_identifier(astNode as Identifier, env);
+		case "ObjectLiteral":
+			return eval_object_expr(astNode as ObjectLiteral, env);
+		case "CallExpr":
+			return eval_call_expr(astNode as CallExpr, env);
+		case "AssignmentExpr":
+			return eval_assignment(astNode as AssignmentExpr, env);
+		case "BinaryExpr":
+			return eval_binary_expr(astNode as BinaryExpr, env);
+		case "Program":
+			return eval_program(astNode as Program, env);
+		case "VarDeclaration":
+			return eval_var_declaration(astNode as VarDeclaration, env);
+		case "FunctionDeclaration":
+			return eval_function_declaration(astNode as FunctionDeclaration, env);
+		default:
+			console.error(
+				"This AST Node has not yet been setup for interpretation.\n",
+				astNode
+			);
+			process.exit(0);
+	}
 }
