@@ -17,7 +17,7 @@ export function createGlobalEnv() {
 	env.declareVar(
 		"meow",
 		MK_NATIVE_pspsps((args, scope) => {
-			console.log(...args);
+			console.log(...args.map((arg) => arg.value || arg));
 			return MK_NULL();
 		}),
 		true

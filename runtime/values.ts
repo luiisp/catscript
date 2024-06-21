@@ -9,6 +9,7 @@ export type ValueType =
 	| "function";
 
 export interface RuntimeVal {
+	value?: any;
 	type: ValueType;
 }
 

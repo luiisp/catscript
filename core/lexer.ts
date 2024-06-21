@@ -2,10 +2,15 @@ export enum TokenType {
   // Literal Types
   Number,
   Identifier,
+  String,
   // Keywords
   Let,
   Const,
   pspsps, // pspsps -> Function Declaration
+
+  // Grouping "" delimiters
+  OpenString, // "
+  CloseString, // "
 
   // Grouping * Operators
   BinaryOperator,
@@ -117,6 +122,16 @@ export function tokenize(sourceCode: string): Token[] {
     } else if (src[0] == ".") {
       tokens.push(token(src.shift(), TokenType.Dot));
     } // HANDLE MULTICHARACTER KEYWORDS, TOKENS, IDENTIFIERS ETC...
+	else if (src[0] == "\"") {
+		src.shift();
+		let str = "";
+		while (src.length > 0 && src[0] != "\"") {
+			str += src.shift();
+		}
+		src.shift();
+		tokens.push(token(str, TokenType.String));
+		
+	}
     else {
       // Handle numeric literals -> Integers
       if (isint(src[0])) {

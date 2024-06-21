@@ -13,6 +13,7 @@ import {
 	Stmt,
 	VarDeclaration,
 	FunctionDeclaration,
+	StringLiteral,
 } from "./ast";
 
 import { Token, tokenize, TokenType } from "./lexer";
@@ -396,6 +397,12 @@ export default class Parser {
 				); // closing paren
 				return value;
 			}
+
+			case TokenType.String:
+				return {
+					kind: "StringLiteral",
+					value: this.eat().value,
+				} as StringLiteral;
 
 			// Unidentified Tokens and Invalid Code Reached
 			default:
