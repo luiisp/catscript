@@ -1,4 +1,4 @@
 pspsps add (x, y)  { # define add function
   x + y # return 15
 }
-meow(add(10, 5)) # print 17
+meow(add(10, 5)) # print 15
