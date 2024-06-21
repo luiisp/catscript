@@ -1,3 +1,4 @@
+# 2024 catscript manifest -> github.com/luiisp/catscript
 staticat obj = {
     name:"catscript",
     repo:"https://github.com/luiisp/catscript",
@@ -8,3 +9,12 @@ staticat obj = {
     version:"lasted",
 };
 meow(obj)
+# Output:
+# {
+#  type: 'object',
+#  properties: Map(4) {
+#    'name' => { value: 'Cat Script', type: 'string' },
+#    'repo' => { value: 'https://github.com/luiisp/catscript', type: 'string' },
+#    'author' => { type: 'object', properties: [Map] },
+#    'version' => { value: 'lasted', type: 'string' }
+#}}
