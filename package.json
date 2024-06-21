@@ -1,0 +1,38 @@
+{
+  "name": "catscript",
+  "version": "1.0.1",
+  "author": {
+    "name": "Pedro Luis Dias",
+    "email": "luisp.diias@gmail.com",
+    "url": "https://github.com/luiisp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luiisp/catscript"
+  },
+  "readme": "README.md",
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luiisp/catscript/issues"
+  },
+  "description": "the world's first programming language made for cats 💻✨😺",
+  "main": "./main.ts",
+  "bin": {
+    "runcat": "./main.ts"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "commander": "^8.1.0",
+    "typescript": "^4.5.2",
+    "ts-node": "^10.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7"
+  }
+}
