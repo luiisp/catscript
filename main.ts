@@ -4,7 +4,7 @@ import { evaluate } from "./runtime/interpreter";
 import fs from 'fs';
 import util from 'util';
 
-run("./examples/sum.cat");
+run("./test.cat");
 
 async function run(filename: string) {
     const parser = new Parser();
