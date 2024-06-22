@@ -1,6 +1,6 @@
 /src
 /examples
-/README.md
+/config
 /test.cat
-/executor.test
+/executor.ts
 /node_modules
