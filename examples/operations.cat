@@ -1,0 +1,4 @@
+cat multiplication = 12 * 12;
+cat division = 12 / 12;
+staticat final = multiplication + division;
+meow(final)
