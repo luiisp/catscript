@@ -31,6 +31,11 @@ runcat file.cat
 ```
 Done! 🎉
 
+# 🙀 Syntax Highlighting
+![image](https://github.com/luiisp/catscript/assets/115284250/741f84eb-1a8f-4c03-bb48-2e945a332521)
+
+[Acess the Syntax Highlighting Repository](https://github.com/luiisp/catscript-syntax-highlighting)
+
 # 💪 Contributing
 
 **We welcome contributions to the i18n4e project!** If you would like to contribute, **please follow these steps:**
