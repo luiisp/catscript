@@ -20,12 +20,16 @@
     "url": "https://github.com/luiisp/catscript/issues"
   },
   "description": "the world's first programming language made for cats 💻✨😺",
-  "main": "./main.ts",
+  "main": "./src/index.ts",
   "bin": {
-    "runcat": "./main.ts"
+    "runcat": "bin/runcat"
   },
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "clean": "rimraf ./lib",
+    "build": "npm run clean && npm run build:cjs",
+    "build:esm": "tsc -p ./config/tsconfig.esm.json && shx mv lib/esm/src/index.js lib/esm/src/index.mjs",
+    "build:cjs": "tsc -p ./config/tsconfig.cjs.json"
   },
   "dependencies": {
     "commander": "^8.3.0",
@@ -33,6 +37,8 @@
     "typescript": "^4.5.2"
   },
   "devDependencies": {
-    "@types/node": "^16.11.7"
+    "@types/node": "^16.11.7",
+    "rimraf": "^5.0.7",
+    "shx": "^0.3.4"
   }
 }
