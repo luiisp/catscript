@@ -1,3 +1,5 @@
+> (This is a fun project) used to demonstrate how interpreters work.
+
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://github.com/luiisp/catscript/assets/115284250/7cdbfba5-6e0d-4481-8ccc-dc14f4f80519">
